@@ -1,0 +1,7 @@
+   # Datos crudos e intermedios: se regeneran con 01_download_bts.py
+   data/raw/
+   data/interim/
+
+   # Archivos temporales de Jupyter y Python
+   .ipynb_checkpoints/
+   __pycache__/
