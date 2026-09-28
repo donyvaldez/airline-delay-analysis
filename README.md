@@ -2,9 +2,11 @@
 
 **Where do major U.S. airlines lose on-time performance to causes they can control?**
 
-A peer benchmark of American, Delta, United, JetBlue and Southwest using official U.S. Department of Transportation flight data (July 2025 – June 2026).
+A peer benchmark of American, Delta, United, JetBlue and Southwest using official U.S. Department of Transportation flight data (July 2025 – June 2026, 4.47 million flights).
 
-> 🚧 **Status:** Work in progress. Phases 1 (Plan) and 2 (Analyze) are complete. Key findings will be published here at the end of the project.
+📊 **[Interactive dashboard on Tableau Public](https://public.tableau.com/app/profile/juan.galan5573/viz/AirlineDelayAnalysis-ControllableDisruptionsBenchmark/Dashboard1)**
+
+> 🚧 **Status:** Phases 1 (Plan), 2 (Analyze) and 3 (Construct) are complete. Final recommendations will be published in Phase 4 (Execute).
 
 ---
 
@@ -14,22 +16,24 @@ Airline operations executives need to know **where** (airport, hour of day, mont
 
 This project separates **controllable** disruptions (caused by the airline) from **non-controllable** ones (weather, air traffic control, security), so no airline is penalized for events outside its control.
 
+## Key findings
+
+1. **AA at DFW is the largest controllable problem.** 25.2% of AA's DFW flights arrived late with carrier-caused minutes vs. 8.8% for peers at the same airport (+16.4 points) — about **26,100 excess controllable late flights per year**, worse than peers in **12 of 12 months**.
+2. **AA's problem starts before any delay can propagate.** 18.0% of AA's first flights of the day at DFW departed 15+ minutes late, vs. 5.1%–9.7% for the other four airlines at their main airports.
+3. **Scheduled ground time explains recovery.** When an aircraft arrives late, airlines recover more minutes on the ground the more time they schedule between flights — the ranking holds for all five airlines. At Denver (same airport conditions), UA schedules 74 minutes and recovers 20.8; WN schedules 50 and recovers none.
+4. **WN at DEN is an early warning.** Its controllable gap vs. peers widened in April–June 2026, its three worst months of the year.
+5. **Open question — cancel or fly late?** AA has the lowest carrier-cancellation rate at DFW (0.25% vs. 0.83% for peers) while having the largest controllable delay; DL shows the opposite pattern at ATL.
+
+*Staffing and maintenance cannot be separated with this data source; both are grouped inside carrier-caused delay.*
+
 ## Project status (PACE framework)
 
 | Phase | Description | Status |
 |---|---|---|
 | **Plan** | Business task, client, metrics, scope — see [`01_Plan.md`](01_Plan.md) | ✅ Complete |
 | **Analyze** | Validation, exploration and 12-month peer benchmark — see [`02_Analyze.ipynb`](02_Analyze.ipynb) | ✅ Complete |
-| **Construct** | Peer benchmark metrics and dashboard | 🔄 Next |
-| **Execute** | Findings and recommendations | ⏳ Pending |
-
-## Early findings (Analyze phase)
-
-- **AA at DFW** had a higher late-arrival rate than its peers departing the same airport in **12 of 12 months** (average gap +12.5 points).
-- At **Denver**, UA beat its peers every month while WN trailed them every month: same airport conditions, different results.
-- **Validation:** delay-cause minutes reconciled to arrival delay for 100% of late flights tested (July 2025).
-
-*Full findings and recommendations will be published in the Execute phase.*
+| **Construct** | Controllable benchmark, recovery and time-of-day analysis, dashboard — see [`03_Construct.ipynb`](03_Construct.ipynb) | ✅ Complete |
+| **Execute** | Recommendations per airline | 🔄 Next |
 
 ## Data
 
@@ -38,7 +42,8 @@ This project separates **controllable** disruptions (caused by the airline) from
 | Source | [BTS TranStats](https://www.transtats.bts.gov/) — Reporting Carrier On-Time Performance (U.S. DOT) |
 | Period | July 2025 – June 2026 (12 months) |
 | Grain | One row per flight |
-| Quality control | All 12 months passed automated validation — see [`docs/ingestion_log.csv`](docs/ingestion_log.csv) |
+| Quality control | All 12 months passed automated validation — see [`docs/ingestion_log.csv`](docs/ingestion_log.csv) and [`docs/cleaning_log.md`](docs/cleaning_log.md) |
+| Definitions | Every column, code and metric — see [`docs/data_dictionary.md`](docs/data_dictionary.md) |
 
 Raw data is not stored in this repository. It is public-domain U.S. government data and can be fully regenerated with the ingestion script.
 
@@ -49,24 +54,32 @@ pip install -r requirements.txt
 python 01_download_bts.py
 ```
 
-The script downloads each month from BTS, verifies file integrity, keeps the project columns, saves them as Parquet, and logs quality checks to `docs/ingestion_log.csv`.
+Then run `02_Analyze.ipynb` and `03_Construct.ipynb` in Jupyter. The Construct notebook writes the dashboard tables to `results/`.
 
 ## Tools
 
-Python (Pandas) · SQL (Google BigQuery) · Tableau Public · GitHub
+Python (Pandas) · Jupyter · Tableau Public · GitHub
 
 ## Repository structure
 
 ```
 airline-delay-analysis/
-├── 01_Plan.md              # Phase 1: business task, scope and metrics
-├── 01_download_bts.py      # Reproducible data ingestion
-├── 02_Analyze.ipynb        # Phase 2: validation, exploration and peer benchmark
-├── requirements.txt        # Python dependencies
+├── 01_Plan.md                 # Phase 1: business task, scope, metrics and hypotheses
+├── 01_download_bts.py         # Reproducible data ingestion
+├── 02_Analyze.ipynb           # Phase 2: validation, exploration and peer benchmark
+├── 03_Construct.ipynb         # Phase 3: controllable benchmark, recovery, time of day
+├── requirements.txt           # Python dependencies
+├── results/                   # Dashboard tables (small CSVs)
+│   ├── benchmark_controllable.csv
+│   ├── monthly_controllable_gap.csv
+│   ├── recovery_by_airline.csv
+│   ├── time_of_day.csv
+│   └── first_flight.csv
 ├── docs/
-│   ├── ingestion_log.csv   # Data-quality log (one row per month)
-│   └── cleaning_log.md     # Validation tests and analysis decisions
-└── data/                   # Not tracked: regenerated by the script
+│   ├── ingestion_log.csv      # Data-quality log (one row per month)
+│   ├── cleaning_log.md        # Validation tests and analysis decisions
+│   └── data_dictionary.md     # Columns, codes, metrics and project terms
+└── data/                      # Not tracked: regenerated by the script
 ```
 
 ## Author

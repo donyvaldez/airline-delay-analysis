@@ -1,0 +1,6 @@
+consecutive_pairs,ground_time_median_min,pct_inbound_late,inbound_delay_min,outbound_delay_min,pct_departs_on_time_after_late_inbound,recovery_min,legs_per_aircraft_day,airline,airport
+111146,66.0,21.9,65.9,49.2,29.8,16.7,3.4,AA,DFW
+20680,63.0,25.1,64.5,58.2,21.7,6.4,2.9,B6,BOS
+186536,70.0,12.4,60.5,40.4,36.7,20.1,3.7,DL,ATL
+82053,74.0,16.3,59.4,38.7,43.3,20.8,3.0,UA,DEN
+76273,50.0,23.9,51.8,51.9,13.3,-0.0,5.0,WN,DEN
