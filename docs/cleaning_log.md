@@ -12,7 +12,7 @@ This log records every decision about how the data was filtered, validated and u
 | 2 | Delay-cause minutes reconcile to arrival delay | DOT Directive #40, sec. III.5 | July 2025: 177,012 of 177,012 late flights reconcile (100%) |
 | 3 | Row counts reconcile across analyses | Internal consistency | July row count (631,428) matches ingestion log; airline-level late flights sum to test 2 total; 12-month July gaps match single-month results |
 | 4 | Construct load reconciles to Analyze | Internal consistency | 4,471,010 client flights in both phases; unchanged after adding `CRSArrTime` |
-| 5 | Excess controllable flights recompute from components | Internal consistency | AA at DFW: 158,920 operated × 16.45% gap = 26,136 |
+| 5 | Excess controllable flights recompute from components | Internal consistency | AA at DFW: 158,920 operated × 16.446% gap (unrounded) = 26,136 |
 | 6 | Monthly and annual controllable gaps agree | Internal consistency | AA at DFW: average monthly gap +16.4 = 12-month pooled gap +16.4 |
 | 7 | "Pre-09:00 departure = first flight of the day" assumption | Assumption test | **Rejected as a proxy:** only 43%–89% of pre-09:00 departures are first flights. The reported metric was changed to the first-flight late rate |
 | 8 | Dashboard exports complete | Row counts | 19, 60, 5, 30 and 5 rows, as designed |
