@@ -4,9 +4,9 @@
 
 A peer benchmark of American, Delta, United, JetBlue and Southwest using official U.S. Department of Transportation flight data (July 2025 – June 2026, 4.47 million flights).
 
-📊 **[Interactive dashboard on Tableau Public](https://public.tableau.com/app/profile/juan.galan5573/viz/AirlineDelayAnalysis-ControllableDisruptionsBenchmark/Dashboard1)**
+📊 **[Interactive dashboard on Tableau Public](https://public.tableau.com/app/profile/juan.galan5573/viz/AirlineDelayAnalysis-ControllableDisruptionsBenchmark/Dashboard1)** · 📄 **[Final report (PDF)](reports/Airline_Delay_Analysis_Final_Report.pdf)** · 📑 **[Executive presentation (PDF)](reports/Airline_Delay_Analysis_Executive_Presentation.pdf)**
 
-> 🚧 **Status:** Phases 1 (Plan), 2 (Analyze) and 3 (Construct) are complete. Final recommendations will be published in Phase 4 (Execute).
+> ✅ **Status:** Complete — all four PACE phases (Plan, Analyze, Construct, Execute).
 
 ---
 
@@ -26,6 +26,19 @@ This project separates **controllable** disruptions (caused by the airline) from
 
 *Staffing and maintenance cannot be separated with this data source; both are grouped inside carrier-caused delay.*
 
+## Recommendations
+
+| # | Airline | Recommendation |
+|---|---|---|
+| R1 | AA at DFW | Diagnose morning station readiness with internal data and bring first-flight punctuality toward the peer level |
+| R2 | AA at DFW | Reduce late-arriving aircraft into the hub and review afternoon and evening ground times |
+| R3 | WN at DEN | Pilot longer ground times on part of the 12:00–17:59 rotations before extending them |
+| R4 | B6 at BOS | Review the ground turnaround process, with a focus on winter readiness |
+| R5 | DL and UA | Maintain current practices; UA at DEN is the internal benchmark; DL should review its carrier-cancellation rate |
+| P1 | AA and DL | Open question: opposite "operate late" vs. "cancel" strategies? Requires internal airline data |
+
+Each recommendation includes its evidence, how to measure success and its cost or risk in the [final report](reports/Airline_Delay_Analysis_Final_Report.pdf).
+
 ## Project status (PACE framework)
 
 | Phase | Description | Status |
@@ -33,7 +46,7 @@ This project separates **controllable** disruptions (caused by the airline) from
 | **Plan** | Business task, client, metrics, scope — see [`01_Plan.md`](01_Plan.md) | ✅ Complete |
 | **Analyze** | Validation, exploration and 12-month peer benchmark — see [`02_Analyze.ipynb`](02_Analyze.ipynb) | ✅ Complete |
 | **Construct** | Controllable benchmark, recovery and time-of-day analysis, dashboard — see [`03_Construct.ipynb`](03_Construct.ipynb) | ✅ Complete |
-| **Execute** | Recommendations per airline | 🔄 Next |
+| **Execute** | Recommendations, final report and executive presentation — see [`reports/`](reports/) | ✅ Complete |
 
 ## Data
 
@@ -69,6 +82,9 @@ airline-delay-analysis/
 ├── 02_Analyze.ipynb           # Phase 2: validation, exploration and peer benchmark
 ├── 03_Construct.ipynb         # Phase 3: controllable benchmark, recovery, time of day
 ├── requirements.txt           # Python dependencies
+├── reports/
+│   ├── Airline_Delay_Analysis_Final_Report.pdf
+│   └── Airline_Delay_Analysis_Executive_Presentation.pdf
 ├── results/                   # Dashboard tables (small CSVs)
 │   ├── benchmark_controllable.csv
 │   ├── monthly_controllable_gap.csv

@@ -1,7 +1,7 @@
 # 01 – Plan · Airline Delay Analysis: Controllable Disruptions Benchmark
 
 *PACE framework — Phase 1 of 4 (Plan → Analyze → Construct → Execute)*
-*Author: Juan M. Valdez Galán · Repository: `airline-delay-analysis` · Status: v3 · Last updated: 2026-09-28*
+*Author: Juan M. Valdez Galán · Repository: `airline-delay-analysis` · Status: v4 · Last updated: 2026-09-30*
 
 ---
 
@@ -111,7 +111,7 @@ All data is U.S. federal public-domain information. No personally identifiable i
 - [x] `02_Analyze.ipynb` and `03_Construct.ipynb` — analysis notebooks
 - [x] `results/` — dashboard tables
 - [x] Tableau Public dashboard (link in README)
-- [ ] README with recommendations per airline (Execute)
+- [x] Recommendations per airline, final report and executive presentation (`reports/`)
 
 ## 12. Timeline
 
@@ -120,7 +120,7 @@ All data is U.S. federal public-domain information. No personally identifiable i
 | Plan | This document + data ingestion | ✅ Done |
 | Analyze | Validation, exploration, cleaning log | ✅ Done |
 | Construct | Controllable benchmark, recovery analysis, dashboard | ✅ Done |
-| Execute | Recommendations, final README | Next |
+| Execute | Recommendations, final report, presentation, final README | ✅ Done |
 
 ## Change log
 
@@ -128,6 +128,7 @@ All data is U.S. federal public-domain information. No personally identifiable i
 |---|---|---|
 | v2 | 2026-09-24 | Plan based on the client's decisions |
 | v3 | 2026-09-28 | Added Q5–Q6 and hypotheses H2–H4; peer average defined as pooled; limitations 5–8 added; **tools corrected:** BigQuery was planned for analysis but not used — the client-airline dataset (4.47M rows, about 1 GB in memory) was analyzed entirely in Pandas |
+| v4 | 2026-09-30 | Execute complete: recommendations R1–R5 and open question P1 approved; final report and executive presentation added |
 
 ## Sources
 
